@@ -6,7 +6,7 @@ package org.tank.tool.core.constant;
   * @date 2019/11/30 14:47
   * @version 1.0.0
  **/
-public interface TankConstant {
+public interface SystemConstant {
 
     /**
      * 默认成功消息
@@ -26,11 +26,11 @@ public interface TankConstant {
     String DEFAULT_UNAUTHORIZED_MESSAGE = "签名认证失败";
 
     /**
-     * 删除状态[0:正常,1:删除]
+     * 系统默认删除状态[0:正常,1:删除]
      */
     Integer DB_NOT_DEL = 0;
 
-    Integer DB_IS_DEL = 1;
+    Integer DB_DEL_FLAG = 1;
 
 
 

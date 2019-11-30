@@ -1,8 +1,5 @@
 package org.tank.tool.core.result;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -11,8 +8,6 @@ import javax.servlet.http.HttpServletResponse;
   * @date 2019/11/30 14:16
   * @version 1.0.0
  **/
-@Getter
-@AllArgsConstructor
 public enum  ResultCode implements IResultCode {
     SUCCESS(0, "成功"),
     FAILURE(HttpServletResponse.SC_BAD_REQUEST, "业务异常"),
@@ -37,7 +32,6 @@ public enum  ResultCode implements IResultCode {
     OBJECT_NOT_FIND(1005,"对象没有找到")
     ;
 
-
     /**
      * code编码
      */
@@ -47,6 +41,19 @@ public enum  ResultCode implements IResultCode {
      */
     final String message;
 
+    ResultCode(int code, String message) {
+        this.code = code;
+        this.message = message;
+    }
 
 
+    @Override
+    public String getMessage() {
+        return this.message;
+    }
+
+    @Override
+    public int getCode() {
+        return this.code;
+    }
 }

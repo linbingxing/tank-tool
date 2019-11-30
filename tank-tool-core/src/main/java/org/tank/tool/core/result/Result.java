@@ -8,7 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.lang.Nullable;
 import org.springframework.util.ObjectUtils;
-import org.tank.tool.core.constant.TankConstant;
+import org.tank.tool.core.constant.SystemConstant;
 
 import java.io.Serializable;
 import java.util.Optional;
@@ -93,7 +93,7 @@ public class Result<T> implements Serializable {
      * @return Result
      */
     public static <T> Result<T> data(T data) {
-        return data(data, TankConstant.DEFAULT_SUCCESS_MESSAGE);
+        return data(data, SystemConstant.DEFAULT_SUCCESS_MESSAGE);
     }
 
     /**
@@ -118,7 +118,7 @@ public class Result<T> implements Serializable {
      * @return Result
      */
     public static <T> Result<T> data(int code, T data, String msg) {
-        return new Result<>(code, data, data == null ? TankConstant.DEFAULT_NULL_MESSAGE : msg);
+        return new Result<>(code, data, data == null ? SystemConstant.DEFAULT_NULL_MESSAGE : msg);
     }
 
     /**
