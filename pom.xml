@@ -65,8 +65,9 @@
     </properties>
 
     <modules>
-
-        <module>tank-tool-core</module>
+        <module>tank-core-tool</module>
+        <module>tank-core-swagger</module>
+        <module>tank-core-db</module>
     </modules>
 
     <dependencyManagement>
