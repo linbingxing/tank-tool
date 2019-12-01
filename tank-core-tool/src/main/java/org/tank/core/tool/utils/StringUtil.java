@@ -1387,6 +1387,29 @@ public class StringUtil  extends StringUtils {
         return sb.toString().toLowerCase();
     }
 
+    /**
+     * 强转string,并去掉多余空格
+     *
+     * @param str 字符串
+     * @return String
+     */
+    public static String toStr(Object str) {
+        return toStr(str, "");
+    }
+
+    /**
+     * 强转string,并去掉多余空格
+     *
+     * @param str          字符串
+     * @param defaultValue 默认值
+     * @return String
+     */
+    public static String toStr(Object str, String defaultValue) {
+        if (null == str) {
+            return defaultValue;
+        }
+        return String.valueOf(str);
+    }
 
     public static void main(String[] args) {
         System.out.println(StringUtil.isNumeric(""));

@@ -211,4 +211,14 @@ public class Result<T> implements Serializable {
     public static <T> Result<T> fail(IResultCode resultCode, String msg) {
         return new Result<>(resultCode, msg);
     }
+
+    /**
+     * 返回R
+     *
+     * @param flag 成功状态
+     * @return R
+     */
+    public static <T> Result<T> status(boolean flag) {
+        return flag ? success(SystemConstant.DEFAULT_SUCCESS_MESSAGE) : fail(SystemConstant.DEFAULT_FAILURE_MESSAGE);
+    }
 }
