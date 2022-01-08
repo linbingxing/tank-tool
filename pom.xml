@@ -1,78 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.tank</groupId>
     <artifactId>tank-tool</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>tank-tool</name>
-    <description>
-        tank-tool is a powerful toolbox for tank
-    </description>
-    <url>https://github.com/linbingxing/tank-tool</url>
-    <developers>
-        <developer>
-            <id>caibing</id>
-            <name>林炳兴</name>
-            <email>linbingxing16@163.com</email>
-            <roles>
-                <role>Java Development Engineer</role>
-            </roles>
-            <timezone>2019-11-30 14:00:00</timezone>
-        </developer>
-    </developers>
-    <licenses>
-        <license>
-            <name>GNU LESSER GENERAL PUBLIC LICENSE</name>
-            <url>http://www.gnu.org/licenses/lgpl.html</url>
-        </license>
-    </licenses>
-    <scm>
-        <connection>https://github.com/linbingxing/tank-tool.git</connection>
-        <developerConnection>https://github.com/linbingxing</developerConnection>
-        <url>https://github.com/linbingxing/tank-tool.git</url>
-    </scm>
-
-    <properties>
-        <tank.tool.version>1.0.0</tank.tool.version>
-
-        <java.version>1.8</java.version>
-        <maven.plugin.version>3.8.0</maven.plugin.version>
-        <swagger.version>2.9.2</swagger.version>
-        <swagger.models.version>1.5.21</swagger.models.version>
-        <swagger.bootstrapui.version>1.9.6</swagger.bootstrapui.version>
-        <mybatis.plus.version>3.1.2</mybatis.plus.version>
-        <curator.framework.version>4.0.1</curator.framework.version>
-        <protostuff.version>1.6.0</protostuff.version>
-        <disruptor.version>3.4.2</disruptor.version>
-        <spring.boot.admin.version>2.1.5</spring.boot.admin.version>
-        <mica.auto.version>1.1.0</mica.auto.version>
-        <alibaba.cloud.version>2.1.0.RELEASE</alibaba.cloud.version>
-        <alibaba.seata.version>0.9.0</alibaba.seata.version>
-
-        <spring.boot.version>2.1.9.RELEASE</spring.boot.version>
-        <spring.cloud.version>Greenwich.SR3</spring.cloud.version>
-        <spring.platform.version>Cairo-SR8</spring.platform.version>
-
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-
-        <guava.version>26.0-jre</guava.version>
-        <okhttp3.version>3.11.0</okhttp3.version>
-        <hutool.version>4.6.3</hutool.version>
-        <mysql.version>5.1.46</mysql.version>
-    </properties>
+    <description>tank-tool</description>
 
     <modules>
         <module>tank-core-tool</module>
         <module>tank-core-swagger</module>
-        <module>tank-core-db</module>
+        <module>tank-core-launch</module>
+        <module>tank-core-test</module>
     </modules>
+
+
+    <properties>
+        <tank.tool.version>1.0.0-SNAPSHOT</tank.tool.version>
+
+        <java.version>1.8</java.version>
+        <maven.plugin.version>3.8.1</maven.plugin.version>
+
+        <!--spring相关-->
+        <spring.plugin.version>2.0.0.RELEASE</spring.plugin.version>
+        <spring.boot.version>2.5.6</spring.boot.version>
+        <spring.cloud.version>2020.0.4</spring.cloud.version>
+        <spring.platform.version>Cairo-SR8</spring.platform.version>
+        <spring.boot.admin.version>2.5.3</spring.boot.admin.version>
+
+        <!--alibaba相关-->
+        <alibaba.cloud.version>2021.1</alibaba.cloud.version>
+        <alibaba.nacos.version>2.0.3</alibaba.nacos.version>
+        <alibaba.seata.version>1.4.2</alibaba.seata.version>
+
+        <!--文档相关-->
+        <swagger.version>2.10.5</swagger.version>
+        <swagger.models.version>1.6.2</swagger.models.version>
+        <knife4j.version>2.0.9</knife4j.version>
+
+        <!--数据库相关-->
+        <mybatis.plus.version>3.4.3.4</mybatis.plus.version>
+        <mybatis.plus.generator.version>3.4.1</mybatis.plus.generator.version>
+
+        <!--其他-->
+        <mica.auto.version>1.2.5</mica.auto.version>
+        <protostuff.version>1.6.0</protostuff.version>
+        <disruptor.version>3.4.2</disruptor.version>
+        <guava.version>30.0-jre</guava.version>
+        <okhttp.version>3.11.0</okhttp.version>
+        <servlet-api.version>4.0.1</servlet-api.version>
+        <hutool.version>5.5.8</hutool.version>
+
+    </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.plugin</groupId>
+                <artifactId>spring-plugin-core</artifactId>
+                <version>${spring.plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.plugin</groupId>
+                <artifactId>spring-plugin-metadata</artifactId>
+                <version>${spring.plugin.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -126,10 +122,27 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.2.0.Final</version>
+        </dependency>
+        <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-auto</artifactId>
             <version>${mica.auto.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- hutool -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+        <!-- Guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 
@@ -175,4 +188,38 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>aliyun-repos</id>
+            <url>https://maven.aliyun.com/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>aliyun-plugin</id>
+            <url>https://maven.aliyun.com/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>oss</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>oss</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+
 </project>
